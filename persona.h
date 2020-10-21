@@ -1,5 +1,5 @@
-#ifndef PERSONA_H
-#define PERSONA_H
+#ifndef persona_h
+#define persona_h
 
 #include <string>
 #include <iostream>
@@ -35,33 +35,32 @@ class Persona{
                     
         }
 
-        inline void   setDNI (string dni) { dni_ = dni; }
-        inline string getDNI () {return dni_; };
+        void   setDNI (string dni) { dni_ = dni; }
+        string getDNI () {return dni_; };
 
-        inline void   setNombre (string nombre) { nombre_ = nombre; }
-        inline string getNombre () {return nombre_; }
+        void   setNombre (string nombre) { nombre_ = nombre; }
+        string getNombre () {return nombre_; }
 
-        inline void   setApellidos (string apellidos) { apellidos_ = apellidos; }
-        inline string getApellidos () { return apellidos_; }
+        void   setApellidos (string apellidos) { apellidos_ = apellidos; }
+        string getApellidos () { return apellidos_; }
 
-        inline bool   setEdad (int edad) { edad_=edad; if(edad>=0){return true;} return false; }
-        inline int    getEdad () { return edad_; }
+        bool   setEdad (int edad) { edad_=edad; if(edad>=0){return true;} return false; }
+        int    getEdad () { return edad_; }
 
-        inline void   setDireccion (string direccion) { direccion_ = direccion; }
-        inline string getDireccion () { return direccion_; }
+        void   setDireccion (string direccion) { direccion_ = direccion; }
+        string getDireccion () { return direccion_; }
 
-        inline void   setLocalidad (string localidad) { localidad_ = localidad; }
-        inline string getLocalidad () { return localidad_; }
- 
-        inline void   setProvincia (string provincia) { provincia_ = provincia; }
-        inline string getProvincia () { return provincia_; }
+        void   setLocalidad (string localidad) { localidad_ = localidad; }
+        string getLocalidad () { return localidad_; }
 
-        inline void   setPais (string pais) { pais_ = pais; }
-        inline string getPais () { return pais_; }
+        void   setProvincia (string provincia) { provincia_ = provincia; }
+        string getProvincia () { return provincia_; }
 
-        inline string getApellidosyNombre () { return apellidos_ + ", " + nombre_; }
-  
-        inline bool   mayor () { if(edad_>=18){return true;} return false; }
+        void   setPais (string pais) { pais_ = pais; }
+        string getPais () { return pais_; }
+        
+        string getApellidosyNombre () { return apellidos_ + ", " + nombre_; }
+        bool   mayor () { }
   
 
 };

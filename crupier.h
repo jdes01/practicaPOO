@@ -1,24 +1,29 @@
-#include "persona.h" 
+#ifndef crupier_h
+#define crupier_h
 
-#ifndef CRUPIER_H
-#define CRUPIER_H
+#include "persona.h" 
 
 #include <string>
 #include <iostream>
 using std::string;
 
-class Crupier: private Persona{
+class Crupier: public Persona{
 
-    private: string codigoEmpleado_;
+    private: 
+    
+    string codigo_;
 
     public:
 
-        Crupier(string codigoEmpleado = "", string dni="",       string nombre="",
+        Crupier(string codigo = "", string dni="",       string nombre="",
                 string apellidos="",        string direccion="", string localidad="", 
-                string provincia="",        string pais="",      int edad=0){
+                string provincia="",        string pais="",      int edad=0): Persona(dni, nombre, apellidos, edad, direccion, localidad, provincia, pais){
 
-                    codigoEmpleado_ = codigoEmpleado;                     
+                    codigo_ = codigo;                     
         }
+
+        inline void   setCodigo (string codigo) { codigo_ = codigo; }
+        inline string getCodigo () { return codigo_; }
 
 };
 

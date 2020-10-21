@@ -1,10 +1,7 @@
 #include "persona.h"
-#include <iostream>
-using namespace std;
 
-int main(){
+bool Persona::mayor(){
 
-    return 0;
-
-
+    if(edad_>=18) return true;
+    return false;
 }
