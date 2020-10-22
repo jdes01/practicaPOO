@@ -11,19 +11,23 @@ class Crupier: public Persona{
 
     private: 
     
-    string codigo_;
+        string codigo_;
+        Persona persona;
 
     public:
 
-        Crupier(string codigo = "", string dni="",       string nombre="",
-                string apellidos="",        string direccion="", string localidad="", 
-                string provincia="",        string pais="",      int edad=0): Persona(dni, nombre, apellidos, edad, direccion, localidad, provincia, pais){
-
-                    codigo_ = codigo;                     
-        }
+        Crupier( string codigo = "",
+                 string dni="",
+                 string nombre="",
+                 string apellidos="",
+                 string direccion="",
+                 string localidad="",
+                 string provincia="",
+                 string pais="",
+                 int edad=0 ) : codigo_(codigo), persona(dni) { }
 
         inline void   setCodigo (string codigo) { codigo_ = codigo; }
-        inline string getCodigo () { return codigo_; }
+        inline string getCodigo ()              { return codigo_; }
 
 };
 

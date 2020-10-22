@@ -3,10 +3,11 @@
 
 #include "persona.h" 
 
+#include <fstream>
 #include <string>
-#include <iostream>
 #include <list>
 using std::string;
+using namespace std;
 
 
 struct Apuesta{
@@ -19,25 +20,31 @@ class Jugador: public Persona{
 
     private: 
     
-    int dinero_;
-    string codigo_;
-    std::list<Apuesta> apuestas_; 
+        int dinero_;
+        string codigo_;
+        list<Apuesta> apuestas_; 
+        Persona persona;
 
     public:
 
-        Jugador(string codigo = 0,  string dni="",       string nombre="",
-                string apellidos="", string direccion="", string localidad="", 
-                string provincia="", string pais="",      int edad=0): Persona(dni, nombre, apellidos, edad, direccion, localidad, provincia, pais){
-
-                    dinero_ = 1000;    
-                    codigo_ = codigo;
-        }
+        Jugador( string codigo = 0,
+                 string dni="",
+                 string nombre="",
+                 string apellidos="",
+                 string direccion="",
+                 string localidad="", 
+                 string provincia="",
+                 string pais="",
+                 int edad=0 ) : codigo_(codigo), persona(dni) { dinero_ = 1000; }
 
     void   setCodigo (string codigo) { codigo_ = codigo; }
     string getCodigo () { return codigo_; }
 
+    int    getDinero () { return dinero_; }
     void   setDinero (int dinero) { dinero_ = dinero; }
-    int getDinero () { return dinero_; }
+
+    list<Apuesta> getApuestas(){ return apuestas_;}
+    void setApuestas(){ }
     
     };
 

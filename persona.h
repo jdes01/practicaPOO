@@ -22,9 +22,8 @@ class Persona{
 
         Persona(string dni="",       string nombre="",    string apellidos="",
                 string direccion="", string localidad="", string provincia="", 
-                string pais="",      int edad=0){
+                string pais="",      int edad=0) : dni_(dni) {
 
-                    dni_       = dni;
                     nombre_    = nombre;
                     apellidos_ = apellidos;
                     edad_      = edad;
@@ -60,7 +59,7 @@ class Persona{
         string getPais () { return pais_; }
         
         string getApellidosyNombre () { return apellidos_ + ", " + nombre_; }
-        bool   mayor () { }
+        bool   mayor () { if(edad_>=18) return true; return false; }
   
 
 };
