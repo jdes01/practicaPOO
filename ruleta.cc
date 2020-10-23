@@ -1,12 +1,17 @@
 // Filename: ruleta.cc
 // Description: Class of type Ruleta
 #include "ruleta.h" 
+#include "persona.h"
+#include "jugador.h" 
 #include <fstream> 
 #include <string>
 
+using namespace std;
+
 bool Ruleta::setBanca(int banca){ 
 
-    if(banca>0){
+    if (banca>0) {
+
         banca_ = banca;
         return true; 
     }
@@ -15,42 +20,46 @@ bool Ruleta::setBanca(int banca){
 
 bool Ruleta::setBola(int bola){
 
-    if(bola>=0 && bola<=36){
+    if (bola>=0 && bola<=36) {
+
         bola_ = bola;
         return true;
     }
     return false;
 }
 
-bool Ruleta::addJuegador(const Jugador &j){
+bool Ruleta::addJugador(Jugador &jugador){
 
-    for(std::list<jugador>::iterator i = jugadores_.begin(); i != jugadores_.end(); i++){
+    for(list<Jugador>::iterator i = jugadores_.begin(); i != jugadores_.end(); i++){
 
-        if(i.getDNI()==j.getDNI()) return false;
+        if(i->getDNI()==jugador.getDNI()) return false;
     }
 
-    jugadores_.push_back(j);
-    std::fstream f;
-    std::string filename = j.getDNI()+".txt";
-    f.open(filename, std::ios::app);
+    jugadores_.push_back(jugador);
+    
+    fstream f;
+    string filename = jugador.getDNI()+".txt";
+    f.open(filename, ios::app);
     f.close(); 
     return true;
 }
 
-int Ruleta::deleteJugador(std::string dni){
+int Ruleta::deleteJugador(string dni){
 
-    if(jugadores_:empty()) return -1;
-    for(std::list<Jugador>::iterator i = jugadores_:begin(); i !=jugadores_.end(); i++;){
+    if(jugadores_.empty()) return -1;
 
-        if (i.getDNI()=dni){
-            jugadores_:erase(i);
+    for(list<Jugador>::iterator i = jugadores_.begin(); i !=jugadores_.end(); i++){
+
+        if (i->getDNI() == dni){
+
+            jugadores_.erase(i);
             return 1;
         }
     }
     return -2;
 }
 
-int Ruleta::deleteJugador(const Jugador &j){
+int Ruleta::deleteJugador(Jugador &jugador){
 
     if(jugadores_.empty()) return -1;
     for(std::list<Jugador>::iterator i = jugadores_.begin(); i!=jugadores_:end(); i++){

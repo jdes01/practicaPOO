@@ -37,12 +37,12 @@ class Jugador: public Persona{
                  string pais="",
                  int edad=0 ) : codigo_(codigo), persona(dni) { dinero_ = 1000; }
 
-    void   setCodigo (string codigo) { codigo_ = codigo; }
-    string getCodigo () { return codigo_; }
-
-    int    getDinero () { return dinero_; }
-    void   setDinero (int dinero) { dinero_ = dinero; }
-
+    inline void   const setCodigo (string codigo) { codigo_ = codigo; }
+    inline string const getCodigo () { return codigo_; }
+  
+    inline int    const getDinero () { return dinero_; }
+    inline void   const setDinero (int dinero) { dinero_ = dinero; }
+ 
     list<Apuesta> getApuestas(){ return apuestas_;}
     void setApuestas(){ }
     

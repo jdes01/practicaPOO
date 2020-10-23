@@ -1,17 +1,20 @@
-// Filename: ruleta.h
-// Description: Class of type Ruleta
-
 #ifndef RULETA_H 
 #define RULETA_H
-#include <list>
 
-class Ruleta{ 
+#include <list>
+using namespace std;
+
+#include "jugador.h"
+#include "crupier.h"
+
+class Ruleta { 
     
     private:
 
         int banca_;
         int bola_;
-        std::list<Jugador> jugadores_; Crupier crupier_;
+        list<Jugador> jugadores_;
+        Crupier crupier_;
 
     public:
 
@@ -30,11 +33,12 @@ class Ruleta{
 
     inline Crupier getCrupier() const { return crupier_; }
     inline void setCrupier(const Crupier &crupier){ crupier_ = crupier; }
-    inline std::list<Jugador> getJugadores() 
+    inline list<Jugador> getJugadores() 
     const { return jugadores_; } 
 
-    bool addJugador(const Jugador &j);
-    int deleteJugador(std::string dni);
+    bool addJugador(Jugador &jugador);
+
+    int deleteJugador(string dni);
     int deleteJugador(const Jugador &j);
     void escribeJugadores(); 
     void leeJugadores();

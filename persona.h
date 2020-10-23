@@ -34,32 +34,32 @@ class Persona{
                     
         }
 
-        void   setDNI (string dni) { dni_ = dni; }
-        string getDNI () {return dni_; };
-
-        void   setNombre (string nombre) { nombre_ = nombre; }
-        string getNombre () {return nombre_; }
-
-        void   setApellidos (string apellidos) { apellidos_ = apellidos; }
-        string getApellidos () { return apellidos_; }
-
-        bool   setEdad (int edad) { edad_=edad; if(edad>=0){return true;} return false; }
-        int    getEdad () { return edad_; }
-
-        void   setDireccion (string direccion) { direccion_ = direccion; }
-        string getDireccion () { return direccion_; }
-
-        void   setLocalidad (string localidad) { localidad_ = localidad; }
-        string getLocalidad () { return localidad_; }
-
-        void   setProvincia (string provincia) { provincia_ = provincia; }
-        string getProvincia () { return provincia_; }
-
-        void   setPais (string pais) { pais_ = pais; }
-        string getPais () { return pais_; }
-        
-        string getApellidosyNombre () { return apellidos_ + ", " + nombre_; }
-        bool   mayor () { if(edad_>=18) return true; return false; }
+        inline void   const setDNI (string dni) { dni_ = dni; }
+        inline string const getDNI () {return dni_; };
+  
+        inline void   const setNombre (string nombre) { nombre_ = nombre; }
+        inline string const getNombre () {return nombre_; }
+  
+        inline void   const setApellidos (string apellidos) { apellidos_ = apellidos; }
+        inline string const getApellidos () { return apellidos_; }
+  
+        inline bool   const setEdad (int edad) { edad_=edad; if(edad>=0){return true;} return false; }
+        inline int    const getEdad () { return edad_; }
+  
+        inline void   const setDireccion (string direccion) { direccion_ = direccion; }
+        inline string const getDireccion () { return direccion_; }
+  
+        inline void   const setLocalidad (string localidad) { localidad_ = localidad; }
+        inline string const getLocalidad () { return localidad_; }
+  
+        inline void   const setProvincia (string provincia) { provincia_ = provincia; }
+        inline string const getProvincia () { return provincia_; }
+  
+        inline void   const setPais (string pais) { pais_ = pais; }
+        inline string const getPais () { return pais_; }
+          
+        inline string const getApellidosyNombre () { return apellidos_ + ", " + nombre_; }
+        inline bool   const mayor () { if(edad_>=18) return true; return false; }
   
 
 };
