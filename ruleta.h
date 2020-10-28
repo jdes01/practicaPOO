@@ -16,6 +16,11 @@ class Ruleta {
         list<Jugador> jugadores_;
         Crupier crupier_;
 
+        int numeroJugadores_;
+        int sumaDinero_;
+        int numeroLanzamientos_;
+        int profitBanca_;
+
     public:
 
     Ruleta(Crupier crupier) : crupier_(crupier){
@@ -44,8 +49,10 @@ class Ruleta {
     void escribeJugadores(); 
     void leeJugadores();
 
-    void giraRuleta(){ bola_ = rand()%37; } 
-    void getPremios();
+    inline void giraRuleta(){ bola_ = rand()%37; } 
+    void getPremios(); //por hacer
+
+    void getEstadoRuleta(int numeroJugadores, int sumaDinero){}
 
 };
 
