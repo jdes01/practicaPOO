@@ -31,17 +31,19 @@ class Ruleta {
     bool setBanca(int banca); 
     bool setBola(int bola);
 
+    inline void setCrupier(Crupier crupier){ crupier_ = crupier; }
     inline Crupier getCrupier() const { return crupier_; }
-    inline void setCrupier(const Crupier &crupier){ crupier_ = crupier; }
-    inline list<Jugador> getJugadores() 
-    const { return jugadores_; } 
+    
+    inline list<Jugador> getJugadores() const { return jugadores_; } 
 
-    bool addJugador(Jugador &jugador);
+    bool addJugador(Jugador jugador);
 
     int deleteJugador(string dni);
-    int deleteJugador(const Jugador &j);
+    int deleteJugador(Jugador jugador);
+
     void escribeJugadores(); 
     void leeJugadores();
+
     void giraRuleta(){ bola_ = rand()%37; } 
     void getPremios();
 
