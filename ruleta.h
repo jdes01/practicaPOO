@@ -50,9 +50,14 @@ class Ruleta {
     void leeJugadores();
 
     inline void giraRuleta(){ bola_ = rand()%37; } 
-    void getPremios(); //por hacer
 
-    void getEstadoRuleta(int numeroJugadores, int sumaDinero){}
+    void getPremios(); 
+
+    bool numeroRojo(int numero);
+
+    bool numeroNegro(int numero);
+
+    // void getEstadoRuleta(int numeroJugadores, int sumaDinero){} 
 
 };
 

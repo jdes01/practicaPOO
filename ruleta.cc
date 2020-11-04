@@ -9,6 +9,24 @@
 
 using namespace std;
 
+bool numeroRojo(int numero){
+
+        if( numero == 1  | 3  | 5  | 7  | 9  | 12 
+                    | 14 | 16 | 18 | 19 | 21 | 23 
+                    | 25 | 27 | 30 | 32 | 34 | 36  ) { return true;}
+
+        else { return false;}
+    }
+
+bool numeroNegro(int numero){
+
+        if( numero == 2  | 4  | 6  | 8  | 10 | 11 
+                    | 13 | 15 | 17 | 20 | 22 | 24 
+                    | 26 | 28 | 29 | 31 | 33 | 35  ) { return true;}
+
+        else { return false;}
+    }
+
 bool Ruleta::setBanca(int banca){ 
 
     if (banca>0) {
@@ -132,4 +150,144 @@ void Ruleta::leeJugadores(){
         f.getline(dinero,    255, ',');
     }
     
+}
+
+void Ruleta::getPremios(){
+
+    std::fstream f;
+    std::string filename;
+
+    for(std::list<Jugador>::iterator jugador = jugadores_.begin(); jugador != jugadores_.end(); jugador++){
+
+        jugador->setApuestas();
+        
+        std::list<Apuesta> apuestas = jugador->getApuestas();
+
+        for(std::list<Apuesta>::iterator a = apuestas.begin(); a != apuestas.end(); a++){
+
+            switch (a->tipo){
+            
+            case 1:
+
+                if(getBola() == stoi(a->valor)){
+
+                    jugador->setDinero( jugador->getDinero() + (35 * a->cantidad) );
+                    setBanca( getBanca() - (35 * a->cantidad) );
+                }
+
+                else{
+
+                    jugador->setDinero( jugador->getDinero() - a->cantidad );
+                    setBanca( getBanca() + a->cantidad );
+                }
+
+                break;
+            
+            case 2:
+
+                if( a->valor == "rojo" ){
+
+                    if( numeroRojo( getBola() ) ){
+                        
+                        jugador->setDinero( jugador->getDinero() + a->cantidad );
+                        setBanca( getBanca() - a->cantidad );
+                    }
+
+                    else{
+
+                        jugador->setDinero( jugador->getDinero() - a->cantidad );
+                        setBanca( getBanca() + a->cantidad );
+                    }
+                }
+            
+                if( a->valor == "negro" ){
+
+                    if( numeroNegro( getBola() ) ){
+                        
+                        jugador->setDinero( jugador->getDinero() + a->cantidad );
+                        setBanca( getBanca() - a->cantidad );
+                    }
+
+                    else{
+
+                        jugador->setDinero( jugador->getDinero() - a->cantidad );
+                        setBanca( getBanca() + a->cantidad );
+                    }
+                }
+
+                break;
+
+            case 3:
+
+                if( a->valor == "par" ){
+
+                    if( getBola()%2 == 0 && getBola() != 0 ){
+                        
+                        jugador->setDinero( jugador->getDinero() + a->cantidad );
+                        setBanca( getBanca() - a->cantidad );
+                    }
+
+                    else{
+
+                        jugador->setDinero( jugador->getDinero() - a->cantidad );
+                        setBanca( getBanca() + a->cantidad );
+                    }
+                }
+            
+                if( a->valor == "impar" ){
+
+                    if( getBola()%2 == 0 && getBola() != 0  ){
+                        
+                        jugador->setDinero( jugador->getDinero() + a->cantidad );
+                        setBanca( getBanca() - a->cantidad );
+                    }
+
+                    else{
+
+                        jugador->setDinero( jugador->getDinero() - a->cantidad );
+                        setBanca( getBanca() + a->cantidad );
+                    }
+                }
+
+                break;
+
+            case 4:
+
+                if( a->valor == "alto" ){
+
+                    if( getBola() >= 19 && getBola() <= 36 ){
+                        
+                        jugador->setDinero( jugador->getDinero() + a->cantidad );
+                        setBanca( getBanca() - a->cantidad );
+                    }
+
+                    else{
+
+                        jugador->setDinero( jugador->getDinero() - a->cantidad );
+                        setBanca( getBanca() + a->cantidad );
+                    }
+                }
+            
+                if( a->valor == "bajo" ){
+
+                    if( getBola() >= 1 && getBola() <= 18  ){
+                        
+                        jugador->setDinero( jugador->getDinero() + a->cantidad );
+                        setBanca( getBanca() - a->cantidad );
+                    }
+
+                    else{
+
+                        jugador->setDinero( jugador->getDinero() - a->cantidad );
+                        setBanca( getBanca() + a->cantidad );
+                    }
+                }
+
+                break;
+            }
+        
+        }
+    
+    }
+
 }
