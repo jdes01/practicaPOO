@@ -1,11 +1,16 @@
 #ifndef RULETA_H 
 #define RULETA_H
 
-#include <list>
-using namespace std;
-
 #include "jugador.h"
 #include "crupier.h"
+#include <list>
+
+using namespace std;
+
+// La clase ruleta describe el funcionamiento de la ruleta del casino. Tiene como parametros a la 'banca' (dinero que esta posee),
+// la bola con la que se juega (valor de donde esta cae), numero de jugadores jugando de forma simultanea (por cada ruleta),
+// sumaDinero (suma de todo el dinero en la mesa), total de lanzamientos a lo largo de la partida y 'profit' (beneficio) de la banca
+// Ademas, cuenta con una lista de jugadores (cada uno una 'persona' 'jugador') y un crupier (cada uno una 'persona' 'crupier').
 
 class Ruleta { 
     
@@ -13,51 +18,58 @@ class Ruleta {
 
         int banca_;
         int bola_;
-        list<Jugador> jugadores_;
-        Crupier crupier_;
-
         int numeroJugadores_;
         int sumaDinero_;
         int numeroLanzamientos_;
         int profitBanca_;
 
+        list<Jugador> jugadores_;
+        Crupier crupier_;
+
     public:
 
-    Ruleta(Crupier crupier) : crupier_(crupier){
+        // el constructor de la ruleta recibe como parametro obligatorio el crupier (asignandolo al crupier encargado de la ruleta)
+        // y de forma automatica inicia el valor de la bola a -1, el dinero de la banca a 1000000 y la semilla de la funcion srand()
 
-        bola_ = -1; 
-        banca_ = 1000000; 
-        srand(time(NULL));
-    }
+        Ruleta(Crupier crupier) : crupier_(crupier){
 
-    inline int getBanca() const { return banca_; } 
-    inline int getBola() const { return bola_; }
+            bola_ = -1; 
+            banca_ = 1000000; 
+            srand(time(NULL));
+        }
 
-    bool setBanca(int banca); 
-    bool setBola(int bola);
+        // funciones setXXXX() : asignan el parametro XXXX recibido por la funcion a la persona
+        // funciones getXXXX() : devuelven el parametro XXXX de la persona
 
-    inline void setCrupier(Crupier crupier){ crupier_ = crupier; }
-    inline Crupier getCrupier() const { return crupier_; }
-    
-    inline list<Jugador> getJugadores() const { return jugadores_; } 
+        inline int     getBanca ()  const { return banca_; }
+        inline Crupier getCrupier() const { return crupier_; }
+        inline int     getBola ()   const { return bola_; }
 
-    bool addJugador(Jugador jugador);
+        void getPremios();
 
-    int deleteJugador(string dni);
-    int deleteJugador(Jugador jugador);
+        inline list<Jugador> getJugadores () const { return jugadores_; }
 
-    void escribeJugadores(); 
-    void leeJugadores();
+        inline void setCrupier (Crupier crupier) { crupier_ = crupier; }
+        
+        bool setBola(int bola);
+        bool setBanca(int banca);
+        
+        // funcion giraRuleta : le asigna a la bola un numero aleatorio entre 0 y 36
 
-    inline void giraRuleta(){ bola_ = rand()%37; } 
+        inline void giraRuleta(){ bola_ = rand()%37; }
 
-    void getPremios(); 
+        bool addJugador(Jugador jugador);
 
-    bool numeroRojo(int numero);
+        int deleteJugador(string dni);
+        int deleteJugador(Jugador jugador);
 
-    bool numeroNegro(int numero);
+        void escribeJugadores(); 
+        void leeJugadores();  
 
-    // void getEstadoRuleta(int numeroJugadores, int sumaDinero){} 
+        bool numeroRojo(int numero);
+        bool numeroNegro(int numero);
+
+        // void getEstadoRuleta(int numeroJugadores, int sumaDinero){} 
 
 };
 

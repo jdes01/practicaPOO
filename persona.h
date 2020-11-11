@@ -1,9 +1,11 @@
-#ifndef persona_h
-#define persona_h
+#ifndef PERSONA_H
+#define PERSONA_H
 
 #include <string>
 #include <iostream>
 using std::string;
+
+// la clase persona tiene parametros como el dni, nombre y apellidos, edad, etc
 
 class Persona{
 
@@ -20,9 +22,13 @@ class Persona{
 
     public:
 
-        Persona(string dni="",       string nombre="",    string apellidos="",
-                string direccion="", string localidad="", string provincia="", 
-                string pais="",      int edad=0) : dni_(dni) {
+        //el constructor Persona recibe como parametro obligatorio el dni (y se lo asigna) y asigna el resto de parametros en
+        //caso de ser recibidos.
+
+        Persona( string dni="",        string nombre="",
+                 string apellidos="",  string direccion="", 
+                 string localidad="",  string provincia="", 
+                 string pais="",       int    edad=0 ) : dni_(dni) {
 
                     nombre_    = nombre;
                     apellidos_ = apellidos;
@@ -31,37 +37,36 @@ class Persona{
                     localidad_ = localidad;
                     provincia_ = provincia;
                     pais_      = pais;
-                    
-        }
+                }
 
-        inline void   const setDNI (string dni) { dni_ = dni; }
-        inline string const getDNI () {return dni_; };
-  
-        inline void   const setNombre (string nombre) { nombre_ = nombre; }
-        inline string const getNombre () {return nombre_; }
-  
-        inline void   const setApellidos (string apellidos) { apellidos_ = apellidos; }
-        inline string const getApellidos () { return apellidos_; }
-  
-        inline bool   const setEdad (int edad) { edad_=edad; if(edad>=0){return true;} return false; }
-        inline int    const getEdad () { return edad_; }
-  
-        inline void   const setDireccion (string direccion) { direccion_ = direccion; }
-        inline string const getDireccion () { return direccion_; }
-  
-        inline void   const setLocalidad (string localidad) { localidad_ = localidad; }
-        inline string const getLocalidad () { return localidad_; }
-  
-        inline void   const setProvincia (string provincia) { provincia_ = provincia; }
-        inline string const getProvincia () { return provincia_; }
-  
-        inline void   const setPais (string pais) { pais_ = pais; }
-        inline string const getPais () { return pais_; }
+        // funciones setXXXX() : asignan el parametro XXXX recibido por la funcion a la persona
+        // funciones getXXXX() : devuelven el parametro XXXX de la persona 
+
+        inline void setDNI       (string dni)       { dni_ = dni; }   
+        inline void setNombre    (string nombre)    { nombre_ = nombre; }   
+        inline void setApellidos (string apellidos) { apellidos_ = apellidos; }
+        inline bool setEdad      (int edad)         { edad_=edad; if(edad>=0){return true;} return false; }
+        inline void setDireccion (string direccion) { direccion_ = direccion; }  
+        inline void setLocalidad (string localidad) { localidad_ = localidad; }
+        inline void setProvincia (string provincia) { provincia_ = provincia; }
+        inline void setPais      (string pais)      { pais_ = pais; }
+
+        inline string getDNI ()       const {return dni_; };                  
+        inline string getNombre ()    const {return nombre_; }
+        inline string getApellidos () const { return apellidos_; } 
+        inline int getEdad ()         const { return edad_; }
+        inline string getDireccion () const { return direccion_; } 
+        inline string getLocalidad () const { return localidad_; }
+        inline string getProvincia () const { return provincia_; }
+        inline string getPais () const { return pais_; }
           
-        inline string const getApellidosyNombre () { return apellidos_ + ", " + nombre_; }
-        inline bool   const mayor () { if(edad_>=18) return true; return false; }
-  
+        // funcion getApellidosyNombre() : devuelve ambos parametros concatenados de la forma " 'apellido', 'nombre' "
 
+        inline string getApellidosyNombre () const { return apellidos_ + ", " + nombre_; }
+
+        // funcion mayor() : devuelve true si es mayor de edad y false si es menor.
+
+        inline bool mayor () { if(edad_>=18) return true; return false; }
 };
 
 #endif
