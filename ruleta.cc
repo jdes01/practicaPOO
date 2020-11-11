@@ -10,7 +10,7 @@ using namespace std;
 
 // recibe un numero y devuelve true o false en funcion de si este es rojo o no en la ruleta
 
-bool numeroRojo(int numero){
+bool Ruleta::numeroRojo(int numero){
 
         if (numero == 1  || 3  || 5  || 7  || 9  || 12 
                    || 14 || 16 || 18 || 19 || 21 || 23 
@@ -21,7 +21,7 @@ bool numeroRojo(int numero){
 
 // recibe un numero y devuelve true o false en funcion de si este es negro o no en la ruleta
 
-bool numeroNegro(int numero){
+bool Ruleta::numeroNegro(int numero){
 
         if( numero == 2  || 4  || 6  || 8  || 10 || 11 
                    || 13 || 15 || 17 || 20 || 22 || 24 

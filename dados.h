@@ -1,6 +1,9 @@
 #ifndef DADOS_H
 #define DADOS_H
 
+#include <cstdlib>
+#include <ctime>
+
 // La clase dados contiene 2 dados y sus respectivos contadores (por cada tirada)
 class Dados {
 
@@ -13,7 +16,7 @@ class Dados {
 
     public:
 
-        Dados::Dados(){         //el constructor inicia la semilla de la funcion srand() y pone los dos dados a 1
+        Dados(){         //el constructor inicia la semilla de la funcion srand() y pone los dos dados a 1
 
             srand(time(NULL));    
 
