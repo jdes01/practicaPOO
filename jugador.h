@@ -51,8 +51,6 @@ class Jugador: public Persona{
 
         inline void setCodigo (string codigo) { codigo_ = codigo; }
         inline void setDinero (int dinero)    { dinero_ = dinero; }
-        
-        // getApuestas() devuelve la lista de apuestas que el jugador lleva realizadas
 
         void setApuestas();
 };

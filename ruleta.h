@@ -8,8 +8,7 @@
 using namespace std;
 
 // La clase ruleta describe el funcionamiento de la ruleta del casino. Tiene como parametros a la 'banca' (dinero que esta posee),
-// la bola con la que se juega (valor de donde esta cae), numero de jugadores jugando de forma simultanea (por cada ruleta),
-// sumaDinero (suma de todo el dinero en la mesa), total de lanzamientos a lo largo de la partida y 'profit' (beneficio) de la banca
+// la bola con la que se juega (valor de donde esta cae)
 // Ademas, cuenta con una lista de jugadores (cada uno una 'persona' 'jugador') y un crupier (cada uno una 'persona' 'crupier').
 
 class Ruleta { 
@@ -18,10 +17,7 @@ class Ruleta {
 
         int banca_;
         int bola_;
-        int numeroJugadores_;
-        int sumaDinero_;
-        int numeroLanzamientos_;
-        int profitBanca_;
+        int nLanzamientosBola_;
 
         list<Jugador> jugadores_;
         Crupier crupier_;
@@ -33,7 +29,8 @@ class Ruleta {
 
         Ruleta(Crupier crupier) : crupier_(crupier){
 
-            bola_ = -1; 
+            bola_ = -1;
+            nLanzamientosBola_ = 0;
             banca_ = 1000000; 
             srand(time(NULL));
         }
@@ -51,7 +48,7 @@ class Ruleta {
 
         inline void setCrupier (Crupier crupier) { crupier_ = crupier; }
         
-        bool setBola(int bola);
+        bool setBola(int bola, int *nLanzamientosBola_);
         bool setBanca(int banca);
         
         // funcion giraRuleta : le asigna a la bola un numero aleatorio entre 0 y 36
@@ -69,7 +66,7 @@ class Ruleta {
         bool numeroRojo(int numero);
         bool numeroNegro(int numero);
 
-        // void getEstadoRuleta(int numeroJugadores, int sumaDinero){} 
+        void getEstadoRuleta(int *numeroJugadores, int *sumaDinero, int *numeroLanzamientos, int *profitBanca); 
 
 };
 

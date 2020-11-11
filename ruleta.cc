@@ -43,10 +43,12 @@ bool Ruleta::setBanca(int banca){
 }
 
 
-bool Ruleta::setBola(int bola){
+bool Ruleta::setBola(int bola, int * nLanzamientosBola_){
+
 
     if (bola>=0 && bola<=36) {
 
+        * nLanzamientosBola_ ++;
         bola_ = bola;
         return true;
     }
@@ -338,4 +340,22 @@ void Ruleta::getPremios() {
     
     }
 
+}
+
+
+void Ruleta::getEstadoRuleta(int *numeroJugadores = 0, int *sumaDinero = 0, int *numeroLanzamientos = 0, int *profitBanca = 0){
+
+    *numeroJugadores = jugadores_.size();
+    
+    for(std::list<Jugador>::iterator jugador = jugadores_.begin(); jugador != jugadores_.end(); jugador++){
+
+        *sumaDinero = *sumaDinero + jugador->getDinero();
+        
+    }
+    
+    *sumaDinero = *sumaDinero + banca_;
+
+    *numeroLanzamientos = nLanzamientosBola_;
+
+    *profitBanca = banca_ - 1000000;
 }
