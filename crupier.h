@@ -15,16 +15,24 @@ class Crupier: public Persona{
     private: 
     
         string codigo_;
-        Persona persona;
 
     public:
 
         // el constructor de la clase crupier recibe como parametros obligatorios el codigo y el dni de la persona, y asigna los
         // parametros de persona en caso de ser recibidos.
 
-        Crupier( string codigo = "",  string dni="",       string nombre="",
-                 string apellidos="", string direccion="", string localidad="",
-                 string provincia="", string pais="",      int    edad=0 ) : codigo_(codigo), persona(dni) { }
+        //Crupier( string codigo = "",  string dni="",       string nombre="",
+        //         string apellidos="", string direccion="", string localidad="",
+        //         string provincia="", string pais="",      int    edad=0 ) : codigo_(codigo), persona(dni) { }
+
+        inline Crupier (string dni,           string codigo,       string nombre="", 
+                        string apellidos="",  int edad=0,          string direccion="", 
+                        string localidad ="", string provincia="", string pais= "" ) : Persona(
+                            
+                            dni, nombre, apellidos, edad, direccion, localidad, provincia, pais){
+           
+                                codigo_=codigo;
+                            };
 
         // funciones setXXXX() : asignan el parametro XXXX recibido por la funcion a la persona
         // funciones getXXXX() : devuelven el parametro XXXX de la persona

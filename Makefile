@@ -14,8 +14,7 @@
 
 # Points to the root of Google Test, relative to where this file is.
 # Remember to tweak this if you move this file.
-GTEST_DIR = /Users/javier/Desktop/carrera/practicaPOO/googletest-release-1.8.1/googletest
-
+GTEST_DIR = /Users/javier/Desktop/carrera/practicaPOO/googletest/gtest-1.7.0
 
 # Where to find user code.
 # USER_DIR = ../samples
@@ -30,7 +29,7 @@ CXXFLAGS += -g -Wall -Wextra -pthread -std=gnu++11
 
 # All tests produced by this Makefile.  Remember to add new tests you
 # created to the list.
-TESTS = dados_unittest
+TESTS = persona_unittest crupier_unittest jugador_unittest
 
 # All Google Test headers.  Usually you shouldn't change this
 # definition.
@@ -72,11 +71,24 @@ gtest_main.a : gtest-all.o gtest_main.o
 # gtest_main.a, depending on whether it defines its own main()
 # function.
 
-dados.o : dados.cc dados.h $(GTEST_HEADERS)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c dados.cc
+persona.o : persona.cc persona.h
 
-dados_unittest.o : dados_unittest.cc dados.h $(GTEST_HEADERS)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c dados_unittest.cc
+crupier.o: crupier.cc crupier.h persona.cc persona.h
 
-dados_unittest : dados.o dados_unittest.o gtest_main.a
+jugador.o: jugador.cc jugador.h persona.cc persona.h
+
+persona_unittest.o : persona_unittest.cc persona.h persona.cc
+
+crupier_unittest.o : crupier_unittest.cc crupier.cc crupier.h persona.cc persona.h
+
+jugador_unittest.o : jugador_unittest.cc jugador.cc jugador.h
+
+persona_unittest : persona.o persona_unittest.o gtest_main.a
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@
+	
+crupier_unittest : crupier.o persona.o crupier_unittest.o gtest_main.a
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@
+
+jugador_unittest : jugador.o persona.o jugador_unittest.o gtest_main.a
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@
+
