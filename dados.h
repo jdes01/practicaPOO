@@ -13,6 +13,10 @@ class Dados {
         int d2_;
         int contador1_=0;
         int contador2_=0;
+        int sumatorio1_=0;
+        int sumatorio2_=0;
+        int ultimos1_ [5] = {0,0,0,0,0};
+        int ultimos2_ [5] = {0,0,0,0,0};
 
     public:
 
@@ -37,8 +41,13 @@ class Dados {
         inline int getLanzamientos1() const { return contador1_;}  //devuelven el contador de cada dado (su numero de lanzamientos)
         inline int getLanzamientos2() const { return contador2_;}  //
 
-        inline int getMedia() const {return (d1_ + d2_)/2 ;}  //devuelve la media del valor actual de ambos dados
+        inline int getMedia1() const { return (sumatorio1_ - 1)/contador1_; }  //devuelve la media del valor actual del dado 1
+        inline int getMedia2() const { return (sumatorio2_ - 2)/contador2_; }  //devuelve la media del valor actual del dado 2
 
+        void getUltimos1(int vector[]);
+        void getUltimos2(int vector[]);
+
+        inline int getDiferencia() const { return( abs(d1_ - d2_) ); }
 };
 
 #endif
