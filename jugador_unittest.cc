@@ -32,7 +32,6 @@ TEST(Jugador, ConstructorParametrosDefecto) {
 
 TEST(Jugador, ConstructorParametros) {
   Jugador j("44XX", "2", "Carlos", "Gutierrez",30, "C/ Mesa 1", "Aguilar", "Sevilla", "España");
-  
   EXPECT_EQ("44XX", j.getDNI());
   EXPECT_EQ("2", j.getCodigo());
   EXPECT_EQ("Carlos", j.getNombre());
@@ -46,7 +45,6 @@ TEST(Jugador, ConstructorParametros) {
 
 TEST(Jugador, setDineroygetDinero) {
   Jugador j("33XX", "1");
-
   EXPECT_EQ(1000, j.getDinero());
   j.setDinero(555);
   EXPECT_EQ(555, j.getDinero());
@@ -54,7 +52,6 @@ TEST(Jugador, setDineroygetDinero) {
 
 TEST(Jugador, setCodigoygetCodigo) {
   Jugador j("33XX", "1");
-
   EXPECT_EQ("1", j.getCodigo());
   j.setCodigo("55");
   EXPECT_EQ("55", j.getCodigo());
@@ -66,6 +63,7 @@ TEST(Jugador, setApuestasygetApuestasVacio) {
   l= j.getApuestas();
   EXPECT_TRUE(l.empty());
 }
+
 TEST(Jugador, setApuestasygetApuestas) {
   Jugador j("33XX", "1");
   string nomfich=j.getDNI()+".txt";
@@ -77,7 +75,7 @@ TEST(Jugador, setApuestasygetApuestas) {
   salida.close();
   list<Apuesta> l;
   j.setApuestas();
-  l= j.getApuestas();
+  l = j.getApuestas();
   EXPECT_EQ(4, l.size());
   list<Apuesta>::iterator i;
   i=l.begin();

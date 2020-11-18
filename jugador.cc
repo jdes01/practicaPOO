@@ -30,9 +30,9 @@ void Jugador::setApuestas(){
         while (f.getline(tipo, MAX, ',')) {
 
             f.getline(valor,    MAX, ',' );
-            f.getline(cantidad, MAX, ',' );
+            f.getline(cantidad, MAX, '\n' );
 
-            Apuesta a = { atoi(tipo), atoi(cantidad), valor };
+            Apuesta a = { atoi(tipo), valor, atoi(cantidad) };
 
             apuestas_.push_back(a);
         }
