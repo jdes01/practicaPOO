@@ -31,9 +31,9 @@ TEST(Ruleta, Constructor) {
 TEST(Ruleta, setBola) {
   Crupier c("33XX","codigo1");
   Ruleta r(c);
-  EXPECT_TRUE(r.setBola(25));
+  EXPECT_TRUE(r.setBola(25,0));//he modificado setBola añadiendole el 0 por que le paso el parametro *numeroLanzamientos
   EXPECT_EQ(25, r.getBola());
-  EXPECT_FALSE(r.setBola(77));
+  EXPECT_FALSE(r.setBola(77,0));//he modificado setBola añadiendole el 0 por que le paso el parametro *numeroLanzamientos
   EXPECT_EQ(25, r.getBola());
 }
 
@@ -198,7 +198,7 @@ TEST(Ruleta, getPremios) {
   salida << 3 << "," << "impar" << "," << 45<< "\n";
   salida.close();
 
-  r.setBola(10); // negro, par, bajo
+  r.setBola(10, 0); // negro, par, bajo
   r.getPremios();
   //44XX -> 1000 + 15*35 - 25 + 35 + 45 = 1580 
   //55XX -> 1000 - 15 - 25 - 35 - 45 = 880
@@ -230,7 +230,7 @@ TEST(Ruleta, getPremiosCero) {
   salida << 3 << "," << "impar" << "," << 80<< "\n";
   salida.close();
 
-  r.setBola(0); // jugadores pierden todo
+  r.setBola(0,0); // jugadores pierden todo
   r.getPremios();
   //44XX -> 1000 - 10 - 20 - 30 - 40 = 900 
   //55XX -> 1000 - 50 - 60 - 70 - 80 = 740
