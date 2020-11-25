@@ -14,8 +14,8 @@ using namespace std;
 struct Apuesta{
     
     int tipo;
-    int cantidad;
     string valor;
+    int cantidad; 
 };
 
 // la clase Jugador es una persona que tiene como parametros los de persona ademas de un codigo identificador
@@ -36,11 +36,12 @@ class Jugador: public Persona{
         // el 'dinero' del jugador a 1000.
 
         inline Jugador( string dni,          string codigo,       string nombre="",
-                        string apellidos="", string direccion="", string localidad="", 
-                        string provincia="", string pais="",      int edad=0 ) : Persona(
+                        string apellidos="", int edad=0,          string direccion="", 
+                        string localidad="", string provincia="", string pais="" ) : Persona(
                                    
                                    dni, nombre, apellidos, edad, direccion, localidad, provincia, pais){
                                    
+                                       codigo_ = codigo;
                                        dinero_ = 1000;
                                    };
 
