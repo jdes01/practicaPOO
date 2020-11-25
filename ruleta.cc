@@ -3,7 +3,7 @@
 #include "jugador.h" 
 
 #include <fstream> 
-#include <string>
+#include <string>      
 #include <iterator>
 
 using namespace std;
