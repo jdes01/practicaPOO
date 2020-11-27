@@ -37,12 +37,13 @@ class Jugador: public Persona{
 
         inline Jugador( string dni,          string codigo,       string nombre="",
                         string apellidos="", int edad=0,          string direccion="", 
-                        string localidad="", string provincia="", string pais="" ) : Persona(
+                        string localidad="", string provincia="", string pais="",
+                        int dinero = 1000 ) : Persona(
                                    
                                    dni, nombre, apellidos, edad, direccion, localidad, provincia, pais){
                                    
                                        codigo_ = codigo;
-                                       dinero_ = 1000;
+                                       dinero_ = dinero;
                                    };
 
         // funciones setXXXX() : asignan el parametro XXXX recibido por la funcion a la persona

@@ -17,7 +17,11 @@ class Ruleta {
 
         int banca_;
         int bola_;
-        int nLanzamientosBola_;
+
+        int nLanzamientos_;
+        int nJugadores_;
+        int sumaDinero_;
+        int profitBanca_;
 
         list<Jugador> jugadores_;
         Crupier crupier_;
@@ -30,8 +34,10 @@ class Ruleta {
         Ruleta(Crupier crupier) : crupier_(crupier){
 
             bola_ = -1;
-            nLanzamientosBola_ = 0;
+            nLanzamientos_ = 0;
+            sumaDinero_ = 0;
             banca_ = 1000000; 
+            profitBanca_ = 0;
             srand(time(NULL));
         }
 
@@ -48,12 +54,12 @@ class Ruleta {
 
         inline void setCrupier (Crupier crupier) { crupier_ = crupier; }
         
-        bool setBola(int bola, int *nLanzamientosBola_);
+        bool setBola(int const &bola);
         bool setBanca(int banca);
         
         // funcion giraRuleta : le asigna a la bola un numero aleatorio entre 0 y 36
 
-        inline void giraRuleta(){ bola_ = rand()%37; }
+        inline void giraRuleta(){ bola_ = rand()%37; nLanzamientos_++;}
 
         bool addJugador(Jugador jugador);
 
@@ -63,10 +69,12 @@ class Ruleta {
         void escribeJugadores(); 
         void leeJugadores();  
 
-        bool numeroRojo(int numero);
-        bool numeroNegro(int numero);
+        bool numeroRojo(int const &numero);
+        bool numeroNegro(int const &numero);
+        bool esPar(int const &valor);
+        bool esAlto(int const &valor);
 
-        void getEstadoRuleta(int *numeroJugadores, int *sumaDinero, int *numeroLanzamientos, int *profitBanca); 
+        void getEstadoRuleta(int &nJugadores, int &sumaDinero, int &numeroLanzamientos, int &profitBanca); 
 
 };
 
