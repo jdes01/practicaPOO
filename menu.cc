@@ -20,9 +20,9 @@ int main(){
 
     int nLanzamientos, nJugadores, sumaDinero, profitBanca;
 
-    int opt;
+    int opt=0;
 
-while (opt!=8) {
+while (opt!=7) {
 
     cout << endl << "----------------------------" << endl;
     cout << endl << "      Main Menu   " << endl;
@@ -31,7 +31,9 @@ while (opt!=8) {
     cout << endl << "      2: Guardar jugadores   " << endl;
     cout << endl << "      3: Ver ruleta   " << endl;
     cout << endl << "      4: Girar ruleta   " << endl;
-    cout << endl << "      5:    " << endl;
+    cout << endl << "      5: Eliminar jugador   " << endl;
+    cout << endl << "      6: Añadir jugador   " << endl;
+    cout << endl << "      7: Salir   " << endl;
     cout << endl << "----------------------------" << endl;
 
     cin >> opt;
@@ -73,6 +75,33 @@ while (opt!=8) {
             }
 
             cout<<"La banca tiene "<<ruleta.getBanca()<<" $"<<endl;
+            break;
+
+        case 5:
+
+            cout<<"Dni del jugador a eliminar:"<<endl;
+            cin>>dni;
+
+            if(ruleta.deleteJugador(dni) == 1) { cout<<"Eliminado"<<endl; }
+            if(ruleta.deleteJugador(dni) == -1){ cout<<"Lista vacia"<<endl; }
+            if(ruleta.deleteJugador(dni) == -2){ cout<<"Jugador no encontrado"<<endl; }
+            break;
+
+        case 6:
+
+            ruleta.addJugador(jugador1);
+            ruleta.addJugador(jugador2);
+
+            cout<<"jugadores añadidos"<<endl;   
+            break;
+
+        case 7:
+
+            cout<<"fin del programa"<<endl;
+            break;
+
+        default:
+            break;    
     }
 
 
